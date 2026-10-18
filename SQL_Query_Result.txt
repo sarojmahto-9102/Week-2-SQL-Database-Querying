@@ -1,0 +1,981 @@
+
+mysql> CREATE DATABASE retail_sales;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> USE retail_sales;
+Database changed
+mysql> CREATE TABLE employees (
+    ->     employee_id INT PRIMARY KEY AUTO_INCREMENT,
+    ->     employee_name VARCHAR(50),
+    ->     department VARCHAR(50),
+    ->     salary DECIMAL(10,2)
+    -> );
+Query OK, 0 rows affected (0.04 sec)
+
+mysql>
+mysql> INSERT INTO employees (employee_name, department, salary)
+    -> VALUES
+    -> ('Aman', 'IT', 45000),
+    -> ('Priya', 'HR', 35000),
+    -> ('Rahul', 'IT', 60000),
+    -> ('Neha', 'Sales', 30000),
+    -> ('Ravi', 'HR', 40000);
+Query OK, 5 rows affected (0.03 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * FROM employees;
++-------------+---------------+------------+----------+
+| employee_id | employee_name | department | salary   |
++-------------+---------------+------------+----------+
+|           1 | Aman          | IT         | 45000.00 |
+|           2 | Priya         | HR         | 35000.00 |
+|           3 | Rahul         | IT         | 60000.00 |
+|           4 | Neha          | Sales      | 30000.00 |
+|           5 | Ravi          | HR         | 40000.00 |
++-------------+---------------+------------+----------+
+5 rows in set (0.01 sec)
+
+mysql> INSERT INTO employees (employee_name, department, salary)
+    -> VALUES
+    -> ('Sahil', 'IT', 42000),
+    -> ('Ankit', 'HR', 38000),
+    -> ('Pooja', 'Sales', 32000),
+    -> ('Karan', 'IT', 55000),
+    -> ('Simran', 'HR', 41000),
+    -> ('Rohit', 'Sales', 36000),
+    -> ('Deepak', 'IT', 48000),
+    -> ('Neha Sharma', 'HR', 39000),
+    -> ('Vikas', 'Sales', 34000),
+    -> ('Priyanka', 'IT', 52000);
+Query OK, 10 rows affected (0.01 sec)
+Records: 10  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * FROM employees;
++-------------+---------------+------------+----------+
+| employee_id | employee_name | department | salary   |
++-------------+---------------+------------+----------+
+|           1 | Aman          | IT         | 45000.00 |
+|           2 | Priya         | HR         | 35000.00 |
+|           3 | Rahul         | IT         | 60000.00 |
+|           4 | Neha          | Sales      | 30000.00 |
+|           5 | Ravi          | HR         | 40000.00 |
+|           6 | Sahil         | IT         | 42000.00 |
+|           7 | Ankit         | HR         | 38000.00 |
+|           8 | Pooja         | Sales      | 32000.00 |
+|           9 | Karan         | IT         | 55000.00 |
+|          10 | Simran        | HR         | 41000.00 |
+|          11 | Rohit         | Sales      | 36000.00 |
+|          12 | Deepak        | IT         | 48000.00 |
+|          13 | Neha Sharma   | HR         | 39000.00 |
+|          14 | Vikas         | Sales      | 34000.00 |
+|          15 | Priyanka      | IT         | 52000.00 |
++-------------+---------------+------------+----------+
+15 rows in set (0.00 sec)
+
+mysql> SELECT * FROM employees;
++-------------+---------------+------------+----------+
+| employee_id | employee_name | department | salary   |
++-------------+---------------+------------+----------+
+|           1 | Aman          | IT         | 45000.00 |
+|           2 | Priya         | HR         | 35000.00 |
+|           3 | Rahul         | IT         | 60000.00 |
+|           4 | Neha          | Sales      | 30000.00 |
+|           5 | Ravi          | HR         | 40000.00 |
+|           6 | Sahil         | IT         | 42000.00 |
+|           7 | Ankit         | HR         | 38000.00 |
+|           8 | Pooja         | Sales      | 32000.00 |
+|           9 | Karan         | IT         | 55000.00 |
+|          10 | Simran        | HR         | 41000.00 |
+|          11 | Rohit         | Sales      | 36000.00 |
+|          12 | Deepak        | IT         | 48000.00 |
+|          13 | Neha Sharma   | HR         | 39000.00 |
+|          14 | Vikas         | Sales      | 34000.00 |
+|          15 | Priyanka      | IT         | 52000.00 |
++-------------+---------------+------------+----------+
+15 rows in set (0.00 sec)
+
+mysql>
+mysql> SELECT employee_name, salary FROM employees;
++---------------+----------+
+| employee_name | salary   |
++---------------+----------+
+| Aman          | 45000.00 |
+| Priya         | 35000.00 |
+| Rahul         | 60000.00 |
+| Neha          | 30000.00 |
+| Ravi          | 40000.00 |
+| Sahil         | 42000.00 |
+| Ankit         | 38000.00 |
+| Pooja         | 32000.00 |
+| Karan         | 55000.00 |
+| Simran        | 41000.00 |
+| Rohit         | 36000.00 |
+| Deepak        | 48000.00 |
+| Neha Sharma   | 39000.00 |
+| Vikas         | 34000.00 |
+| Priyanka      | 52000.00 |
++---------------+----------+
+15 rows in set (0.01 sec)
+
+mysql>
+mysql> SELECT * FROM employees WHERE department = 'IT';
++-------------+---------------+------------+----------+
+| employee_id | employee_name | department | salary   |
++-------------+---------------+------------+----------+
+|           1 | Aman          | IT         | 45000.00 |
+|           3 | Rahul         | IT         | 60000.00 |
+|           6 | Sahil         | IT         | 42000.00 |
+|           9 | Karan         | IT         | 55000.00 |
+|          12 | Deepak        | IT         | 48000.00 |
+|          15 | Priyanka      | IT         | 52000.00 |
++-------------+---------------+------------+----------+
+6 rows in set (0.01 sec)
+
+mysql>
+mysql> SELECT * FROM employees WHERE salary > 40000;
++-------------+---------------+------------+----------+
+| employee_id | employee_name | department | salary   |
++-------------+---------------+------------+----------+
+|           1 | Aman          | IT         | 45000.00 |
+|           3 | Rahul         | IT         | 60000.00 |
+|           6 | Sahil         | IT         | 42000.00 |
+|           9 | Karan         | IT         | 55000.00 |
+|          10 | Simran        | HR         | 41000.00 |
+|          12 | Deepak        | IT         | 48000.00 |
+|          15 | Priyanka      | IT         | 52000.00 |
++-------------+---------------+------------+----------+
+7 rows in set (0.00 sec)
+
+mysql>
+mysql> SELECT * FROM employees ORDER BY salary ASC;
++-------------+---------------+------------+----------+
+| employee_id | employee_name | department | salary   |
++-------------+---------------+------------+----------+
+|           4 | Neha          | Sales      | 30000.00 |
+|           8 | Pooja         | Sales      | 32000.00 |
+|          14 | Vikas         | Sales      | 34000.00 |
+|           2 | Priya         | HR         | 35000.00 |
+|          11 | Rohit         | Sales      | 36000.00 |
+|           7 | Ankit         | HR         | 38000.00 |
+|          13 | Neha Sharma   | HR         | 39000.00 |
+|           5 | Ravi          | HR         | 40000.00 |
+|          10 | Simran        | HR         | 41000.00 |
+|           6 | Sahil         | IT         | 42000.00 |
+|           1 | Aman          | IT         | 45000.00 |
+|          12 | Deepak        | IT         | 48000.00 |
+|          15 | Priyanka      | IT         | 52000.00 |
+|           9 | Karan         | IT         | 55000.00 |
+|           3 | Rahul         | IT         | 60000.00 |
++-------------+---------------+------------+----------+
+15 rows in set (0.00 sec)
+
+mysql>
+mysql> SELECT * FROM employees ORDER BY salary DESC;
++-------------+---------------+------------+----------+
+| employee_id | employee_name | department | salary   |
++-------------+---------------+------------+----------+
+|           3 | Rahul         | IT         | 60000.00 |
+|           9 | Karan         | IT         | 55000.00 |
+|          15 | Priyanka      | IT         | 52000.00 |
+|          12 | Deepak        | IT         | 48000.00 |
+|           1 | Aman          | IT         | 45000.00 |
+|           6 | Sahil         | IT         | 42000.00 |
+|          10 | Simran        | HR         | 41000.00 |
+|           5 | Ravi          | HR         | 40000.00 |
+|          13 | Neha Sharma   | HR         | 39000.00 |
+|           7 | Ankit         | HR         | 38000.00 |
+|          11 | Rohit         | Sales      | 36000.00 |
+|           2 | Priya         | HR         | 35000.00 |
+|          14 | Vikas         | Sales      | 34000.00 |
+|           8 | Pooja         | Sales      | 32000.00 |
+|           4 | Neha          | Sales      | 30000.00 |
++-------------+---------------+------------+----------+
+15 rows in set (0.00 sec)
+
+mysql> -- 1. Total employees
+mysql> SELECT COUNT(*) FROM employees;
++----------+
+| COUNT(*) |
++----------+
+|       15 |
++----------+
+1 row in set (0.02 sec)
+
+mysql>
+mysql> -- 2. Total salary
+mysql> SELECT SUM(salary) FROM employees;
++-------------+
+| SUM(salary) |
++-------------+
+|   627000.00 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql>
+mysql> -- 3. Average salary
+mysql> SELECT AVG(salary) FROM employees;
++--------------+
+| AVG(salary)  |
++--------------+
+| 41800.000000 |
++--------------+
+1 row in set (0.00 sec)
+
+mysql>
+mysql> -- 4. Highest salary
+mysql> SELECT MAX(salary) FROM employees;
++-------------+
+| MAX(salary) |
++-------------+
+|    60000.00 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql>
+mysql> -- 5. Lowest salary
+mysql> SELECT MIN(salary) FROM employees;
++-------------+
+| MIN(salary) |
++-------------+
+|    30000.00 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql>
+mysql> -- 6. Department-wise employee count
+mysql> SELECT department, COUNT(*)
+    -> FROM employees
+    -> GROUP BY department;
++------------+----------+
+| department | COUNT(*) |
++------------+----------+
+| IT         |        6 |
+| HR         |        5 |
+| Sales      |        4 |
++------------+----------+
+3 rows in set (0.00 sec)
+
+mysql>
+mysql> -- 7. Department-wise average salary
+mysql> SELECT department, AVG(salary)
+    -> FROM employees
+    -> GROUP BY department;
++------------+--------------+
+| department | AVG(salary)  |
++------------+--------------+
+| IT         | 50333.333333 |
+| HR         | 38600.000000 |
+| Sales      | 33000.000000 |
++------------+--------------+
+3 rows in set (0.00 sec)
+
+mysql>
+mysql> -- 8. Departments with average salary above 40000
+mysql> SELECT department, AVG(salary)
+    -> FROM employees
+    -> GROUP BY department
+    -> HAVING AVG(salary) > 40000;
++------------+--------------+
+| department | AVG(salary)  |
++------------+--------------+
+| IT         | 50333.333333 |
++------------+--------------+
+1 row in set (0.00 sec)
+
+mysql> CREATE TABLE customers (
+    ->     customer_id INT PRIMARY KEY AUTO_INCREMENT,
+    ->     customer_name VARCHAR(50),
+    ->     city VARCHAR(50)
+    -> );
+Query OK, 0 rows affected (0.02 sec)
+
+mysql>
+mysql> CREATE TABLE orders (
+    ->     order_id INT PRIMARY KEY AUTO_INCREMENT,
+    ->     customer_id INT,
+    ->     total_amount DECIMAL(10,2),
+    ->     FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
+    -> );
+Query OK, 0 rows affected (0.04 sec)
+
+mysql>
+mysql> INSERT INTO customers (customer_name, city) VALUES
+    -> ('Rahul', 'Delhi'),
+    -> ('Priya', 'Patna'),
+    -> ('Amit', 'Mumbai');
+Query OK, 3 rows affected (0.01 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql>
+mysql> INSERT INTO orders (customer_id, total_amount) VALUES
+    -> (1, 2500),
+    -> (2, 4000),
+    -> (1, 1500);
+Query OK, 3 rows affected (0.00 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql>
+mysql> -- 1. INNER JOIN
+mysql> SELECT c.customer_name, o.total_amount
+    -> FROM customers c
+    -> INNER JOIN orders o ON c.customer_id = o.customer_id;
++---------------+--------------+
+| customer_name | total_amount |
++---------------+--------------+
+| Rahul         |      2500.00 |
+| Rahul         |      1500.00 |
+| Priya         |      4000.00 |
++---------------+--------------+
+3 rows in set (0.00 sec)
+
+mysql>
+mysql> -- 2. LEFT JOIN
+mysql> SELECT c.customer_name, o.total_amount
+    -> FROM customers c
+    -> LEFT JOIN orders o ON c.customer_id = o.customer_id;
++---------------+--------------+
+| customer_name | total_amount |
++---------------+--------------+
+| Rahul         |      2500.00 |
+| Rahul         |      1500.00 |
+| Priya         |      4000.00 |
+| Amit          |         NULL |
++---------------+--------------+
+4 rows in set (0.00 sec)
+
+mysql>
+mysql> -- 3. Multiple-table JOIN
+mysql> SELECT c.customer_name, o.order_id, o.total_amount
+    -> FROM customers c
+    -> INNER JOIN orders o ON c.customer_id = o.customer_id;
++---------------+----------+--------------+
+| customer_name | order_id | total_amount |
++---------------+----------+--------------+
+| Rahul         |        1 |      2500.00 |
+| Rahul         |        3 |      1500.00 |
+| Priya         |        2 |      4000.00 |
++---------------+----------+--------------+
+3 rows in set (0.00 sec)
+
+mysql> INSERT INTO customers (customer_name, city) VALUES
+    -> ('Neha', 'Delhi'),
+    -> ('Ravi', 'Jaipur'),
+    -> ('Aman', 'Patna'),
+    -> ('Simran', 'Mumbai'),
+    -> ('Karan', 'Lucknow'),
+    -> ('Pooja', 'Noida'),
+    -> ('Vikas', 'Bhopal');
+Query OK, 7 rows affected (0.01 sec)
+Records: 7  Duplicates: 0  Warnings: 0
+
+mysql>
+mysql> INSERT INTO orders (customer_id, total_amount) VALUES
+    -> (3, 3200),
+    -> (4, 4500),
+    -> (5, 1800),
+    -> (6, 5200),
+    -> (7, 2700),
+    -> (8, 6100),
+    -> (9, 3500),
+    -> (10, 4200);
+Query OK, 8 rows affected (0.01 sec)
+Records: 8  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * FROM customers;
++-------------+---------------+---------+
+| customer_id | customer_name | city    |
++-------------+---------------+---------+
+|           1 | Rahul         | Delhi   |
+|           2 | Priya         | Patna   |
+|           3 | Amit          | Mumbai  |
+|           4 | Neha          | Delhi   |
+|           5 | Ravi          | Jaipur  |
+|           6 | Aman          | Patna   |
+|           7 | Simran        | Mumbai  |
+|           8 | Karan         | Lucknow |
+|           9 | Pooja         | Noida   |
+|          10 | Vikas         | Bhopal  |
++-------------+---------------+---------+
+10 rows in set (0.00 sec)
+
+mysql> SELECT * FROM orders;
++----------+-------------+--------------+
+| order_id | customer_id | total_amount |
++----------+-------------+--------------+
+|        1 |           1 |      2500.00 |
+|        2 |           2 |      4000.00 |
+|        3 |           1 |      1500.00 |
+|        4 |           3 |      3200.00 |
+|        5 |           4 |      4500.00 |
+|        6 |           5 |      1800.00 |
+|        7 |           6 |      5200.00 |
+|        8 |           7 |      2700.00 |
+|        9 |           8 |      6100.00 |
+|       10 |           9 |      3500.00 |
+|       11 |          10 |      4200.00 |
++----------+-------------+--------------+
+11 rows in set (0.00 sec)
+
+mysql> SELECT c.customer_name, o.order_id, o.total_amount
+    -> FROM customers c
+    -> RIGHT JOIN orders o
+    -> ON c.customer_id = o.customer_id;
++---------------+----------+--------------+
+| customer_name | order_id | total_amount |
++---------------+----------+--------------+
+| Rahul         |        1 |      2500.00 |
+| Priya         |        2 |      4000.00 |
+| Rahul         |        3 |      1500.00 |
+| Amit          |        4 |      3200.00 |
+| Neha          |        5 |      4500.00 |
+| Ravi          |        6 |      1800.00 |
+| Aman          |        7 |      5200.00 |
+| Simran        |        8 |      2700.00 |
+| Karan         |        9 |      6100.00 |
+| Pooja         |       10 |      3500.00 |
+| Vikas         |       11 |      4200.00 |
++---------------+----------+--------------+
+11 rows in set (0.00 sec)
+
+mysql> -- Orders above average amount
+mysql> SELECT *
+    -> FROM orders
+    -> WHERE total_amount > (SELECT AVG(total_amount) FROM orders);
++----------+-------------+--------------+
+| order_id | customer_id | total_amount |
++----------+-------------+--------------+
+|        2 |           2 |      4000.00 |
+|        5 |           4 |      4500.00 |
+|        7 |           6 |      5200.00 |
+|        9 |           8 |      6100.00 |
+|       11 |          10 |      4200.00 |
++----------+-------------+--------------+
+5 rows in set (0.00 sec)
+
+mysql>
+mysql> -- Customers who placed orders
+mysql> SELECT customer_name
+    -> FROM customers
+    -> WHERE customer_id IN (SELECT customer_id FROM orders);
++---------------+
+| customer_name |
++---------------+
+| Rahul         |
+| Priya         |
+| Amit          |
+| Neha          |
+| Ravi          |
+| Aman          |
+| Simran        |
+| Karan         |
+| Pooja         |
+| Vikas         |
++---------------+
+10 rows in set (0.00 sec)
+
+mysql> -- Order amount classification
+mysql> SELECT order_id, total_amount,
+    -> CASE
+    ->     WHEN total_amount >= 5000 THEN 'High'
+    ->     WHEN total_amount >= 3000 THEN 'Medium'
+    ->     ELSE 'Low'
+    -> END AS order_category
+    -> FROM orders;
++----------+--------------+----------------+
+| order_id | total_amount | order_category |
++----------+--------------+----------------+
+|        1 |      2500.00 | Low            |
+|        2 |      4000.00 | Medium         |
+|        3 |      1500.00 | Low            |
+|        4 |      3200.00 | Medium         |
+|        5 |      4500.00 | Medium         |
+|        6 |      1800.00 | Low            |
+|        7 |      5200.00 | High           |
+|        8 |      2700.00 | Low            |
+|        9 |      6100.00 | High           |
+|       10 |      3500.00 | Medium         |
+|       11 |      4200.00 | Medium         |
++----------+--------------+----------------+
+11 rows in set (0.01 sec)
+
+mysql> SELECT COUNT(*) FROM customers;
++----------+
+| COUNT(*) |
++----------+
+|       10 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> SELECT COUNT(*) FROM orders;
++----------+
+| COUNT(*) |
++----------+
+|       11 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> USE retail_sales;
+Database changed
+mysql>
+mysql> -- 1. DISTINCT
+mysql> SELECT DISTINCT city FROM customers;
++---------+
+| city    |
++---------+
+| Delhi   |
+| Patna   |
+| Mumbai  |
+| Jaipur  |
+| Lucknow |
+| Noida   |
+| Bhopal  |
++---------+
+7 rows in set (0.00 sec)
+
+mysql>
+mysql> -- 2. LIKE
+mysql> SELECT * FROM customers WHERE customer_name LIKE 'A%';
++-------------+---------------+--------+
+| customer_id | customer_name | city   |
++-------------+---------------+--------+
+|           3 | Amit          | Mumbai |
+|           6 | Aman          | Patna  |
++-------------+---------------+--------+
+2 rows in set (0.01 sec)
+
+mysql>
+mysql> -- 3. IN
+mysql> SELECT * FROM customers WHERE city IN ('Delhi', 'Patna');
++-------------+---------------+-------+
+| customer_id | customer_name | city  |
++-------------+---------------+-------+
+|           1 | Rahul         | Delhi |
+|           2 | Priya         | Patna |
+|           4 | Neha          | Delhi |
+|           6 | Aman          | Patna |
++-------------+---------------+-------+
+4 rows in set (0.00 sec)
+
+mysql>
+mysql> -- 4. BETWEEN
+mysql> SELECT * FROM orders WHERE total_amount BETWEEN 2000 AND 5000;
++----------+-------------+--------------+
+| order_id | customer_id | total_amount |
++----------+-------------+--------------+
+|        1 |           1 |      2500.00 |
+|        2 |           2 |      4000.00 |
+|        4 |           3 |      3200.00 |
+|        5 |           4 |      4500.00 |
+|        8 |           7 |      2700.00 |
+|       10 |           9 |      3500.00 |
+|       11 |          10 |      4200.00 |
++----------+-------------+--------------+
+7 rows in set (0.00 sec)
+
+mysql>
+mysql> -- 5. AND
+mysql> SELECT * FROM orders WHERE total_amount > 2000 AND total_amount < 5000;
++----------+-------------+--------------+
+| order_id | customer_id | total_amount |
++----------+-------------+--------------+
+|        1 |           1 |      2500.00 |
+|        2 |           2 |      4000.00 |
+|        4 |           3 |      3200.00 |
+|        5 |           4 |      4500.00 |
+|        8 |           7 |      2700.00 |
+|       10 |           9 |      3500.00 |
+|       11 |          10 |      4200.00 |
++----------+-------------+--------------+
+7 rows in set (0.00 sec)
+
+mysql>
+mysql> -- 6. OR
+mysql> SELECT * FROM customers WHERE city = 'Delhi' OR city = 'Mumbai';
++-------------+---------------+--------+
+| customer_id | customer_name | city   |
++-------------+---------------+--------+
+|           1 | Rahul         | Delhi  |
+|           3 | Amit          | Mumbai |
+|           4 | Neha          | Delhi  |
+|           7 | Simran        | Mumbai |
++-------------+---------------+--------+
+4 rows in set (0.00 sec)
+
+mysql>
+mysql> -- 7. NOT
+mysql> SELECT * FROM customers WHERE NOT city = 'Delhi';
++-------------+---------------+---------+
+| customer_id | customer_name | city    |
++-------------+---------------+---------+
+|           2 | Priya         | Patna   |
+|           3 | Amit          | Mumbai  |
+|           5 | Ravi          | Jaipur  |
+|           6 | Aman          | Patna   |
+|           7 | Simran        | Mumbai  |
+|           8 | Karan         | Lucknow |
+|           9 | Pooja         | Noida   |
+|          10 | Vikas         | Bhopal  |
++-------------+---------------+---------+
+8 rows in set (0.00 sec)
+
+mysql>
+mysql> -- 8. ORDER BY
+mysql> SELECT * FROM orders ORDER BY total_amount DESC;
++----------+-------------+--------------+
+| order_id | customer_id | total_amount |
++----------+-------------+--------------+
+|        9 |           8 |      6100.00 |
+|        7 |           6 |      5200.00 |
+|        5 |           4 |      4500.00 |
+|       11 |          10 |      4200.00 |
+|        2 |           2 |      4000.00 |
+|       10 |           9 |      3500.00 |
+|        4 |           3 |      3200.00 |
+|        8 |           7 |      2700.00 |
+|        1 |           1 |      2500.00 |
+|        6 |           5 |      1800.00 |
+|        3 |           1 |      1500.00 |
++----------+-------------+--------------+
+11 rows in set (0.00 sec)
+
+mysql>
+mysql> -- 9. LIMIT
+mysql> SELECT * FROM customers LIMIT 5;
++-------------+---------------+--------+
+| customer_id | customer_name | city   |
++-------------+---------------+--------+
+|           1 | Rahul         | Delhi  |
+|           2 | Priya         | Patna  |
+|           3 | Amit          | Mumbai |
+|           4 | Neha          | Delhi  |
+|           5 | Ravi          | Jaipur |
++-------------+---------------+--------+
+5 rows in set (0.00 sec)
+
+mysql>
+mysql> -- 10. Total customers
+mysql> SELECT COUNT(*) AS total_customers FROM customers;
++-----------------+
+| total_customers |
++-----------------+
+|              10 |
++-----------------+
+1 row in set (0.00 sec)
+
+mysql>
+mysql> -- 11. Average order amount
+mysql> SELECT AVG(total_amount) AS average_order FROM orders;
++---------------+
+| average_order |
++---------------+
+|   3563.636364 |
++---------------+
+1 row in set (0.00 sec)
+
+mysql>
+mysql> -- 12. Maximum order
+mysql> SELECT MAX(total_amount) AS highest_order FROM orders;
++---------------+
+| highest_order |
++---------------+
+|       6100.00 |
++---------------+
+1 row in set (0.00 sec)
+
+mysql>
+mysql> -- 13. Minimum order
+mysql> SELECT MIN(total_amount) AS lowest_order FROM orders;
++--------------+
+| lowest_order |
++--------------+
+|      1500.00 |
++--------------+
+1 row in set (0.00 sec)
+
+mysql>
+mysql> -- 14. Total sales
+mysql> SELECT SUM(total_amount) AS total_sales FROM orders;
++-------------+
+| total_sales |
++-------------+
+|    39200.00 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql>
+mysql> -- 15. Department-wise employee count
+mysql> SELECT department, COUNT(*) AS employee_count
+    -> FROM employees GROUP BY department;
++------------+----------------+
+| department | employee_count |
++------------+----------------+
+| IT         |              6 |
+| HR         |              5 |
+| Sales      |              4 |
++------------+----------------+
+3 rows in set (0.00 sec)
+
+mysql>
+mysql> -- 16. Department-wise average salary
+mysql> SELECT department, AVG(salary) AS average_salary
+    -> FROM employees GROUP BY department;
++------------+----------------+
+| department | average_salary |
++------------+----------------+
+| IT         |   50333.333333 |
+| HR         |   38600.000000 |
+| Sales      |   33000.000000 |
++------------+----------------+
+3 rows in set (0.00 sec)
+
+mysql>
+mysql> -- 17. Departments with average salary above 40000
+mysql> SELECT department, AVG(salary) AS average_salary
+    -> FROM employees GROUP BY department
+    -> HAVING AVG(salary) > 40000;
++------------+----------------+
+| department | average_salary |
++------------+----------------+
+| IT         |   50333.333333 |
++------------+----------------+
+1 row in set (0.00 sec)
+
+mysql>
+mysql> -- 18. Employees earning above average
+mysql> SELECT * FROM employees
+    -> WHERE salary > (SELECT AVG(salary) FROM employees);
++-------------+---------------+------------+----------+
+| employee_id | employee_name | department | salary   |
++-------------+---------------+------------+----------+
+|           1 | Aman          | IT         | 45000.00 |
+|           3 | Rahul         | IT         | 60000.00 |
+|           6 | Sahil         | IT         | 42000.00 |
+|           9 | Karan         | IT         | 55000.00 |
+|          12 | Deepak        | IT         | 48000.00 |
+|          15 | Priyanka      | IT         | 52000.00 |
++-------------+---------------+------------+----------+
+6 rows in set (0.00 sec)
+
+mysql>
+mysql> -- 19. Customers with orders
+mysql> SELECT c.customer_name, o.total_amount
+    -> FROM customers c
+    -> INNER JOIN orders o ON c.customer_id = o.customer_id;
++---------------+--------------+
+| customer_name | total_amount |
++---------------+--------------+
+| Rahul         |      2500.00 |
+| Rahul         |      1500.00 |
+| Priya         |      4000.00 |
+| Amit          |      3200.00 |
+| Neha          |      4500.00 |
+| Ravi          |      1800.00 |
+| Aman          |      5200.00 |
+| Simran        |      2700.00 |
+| Karan         |      6100.00 |
+| Pooja         |      3500.00 |
+| Vikas         |      4200.00 |
++---------------+--------------+
+11 rows in set (0.00 sec)
+
+mysql>
+mysql> -- 20. Classify order amounts
+mysql> SELECT order_id, total_amount,
+    -> CASE
+    ->     WHEN total_amount >= 5000 THEN 'High'
+    ->     WHEN total_amount >= 3000 THEN 'Medium'
+    ->     ELSE 'Low'
+    -> END AS order_category
+    -> FROM orders;
++----------+--------------+----------------+
+| order_id | total_amount | order_category |
++----------+--------------+----------------+
+|        1 |      2500.00 | Low            |
+|        2 |      4000.00 | Medium         |
+|        3 |      1500.00 | Low            |
+|        4 |      3200.00 | Medium         |
+|        5 |      4500.00 | Medium         |
+|        6 |      1800.00 | Low            |
+|        7 |      5200.00 | High           |
+|        8 |      2700.00 | Low            |
+|        9 |      6100.00 | High           |
+|       10 |      3500.00 | Medium         |
+|       11 |      4200.00 | Medium         |
++----------+--------------+----------------+
+11 rows in set (0.00 sec)
+
+mysql> -- 21. Rank employees by salary
+mysql> SELECT employee_id, employee_name, department, salary,
+    ->        RANK() OVER (ORDER BY salary DESC) AS salary_rank
+    -> FROM employees;
++-------------+---------------+------------+----------+-------------+
+| employee_id | employee_name | department | salary   | salary_rank |
++-------------+---------------+------------+----------+-------------+
+|           3 | Rahul         | IT         | 60000.00 |           1 |
+|           9 | Karan         | IT         | 55000.00 |           2 |
+|          15 | Priyanka      | IT         | 52000.00 |           3 |
+|          12 | Deepak        | IT         | 48000.00 |           4 |
+|           1 | Aman          | IT         | 45000.00 |           5 |
+|           6 | Sahil         | IT         | 42000.00 |           6 |
+|          10 | Simran        | HR         | 41000.00 |           7 |
+|           5 | Ravi          | HR         | 40000.00 |           8 |
+|          13 | Neha Sharma   | HR         | 39000.00 |           9 |
+|           7 | Ankit         | HR         | 38000.00 |          10 |
+|          11 | Rohit         | Sales      | 36000.00 |          11 |
+|           2 | Priya         | HR         | 35000.00 |          12 |
+|          14 | Vikas         | Sales      | 34000.00 |          13 |
+|           8 | Pooja         | Sales      | 32000.00 |          14 |
+|           4 | Neha          | Sales      | 30000.00 |          15 |
++-------------+---------------+------------+----------+-------------+
+15 rows in set (0.01 sec)
+
+mysql> -- 22. Assign row numbers to employees by salary
+mysql> SELECT employee_id, employee_name, department, salary,
+    ->        ROW_NUMBER() OVER (ORDER BY salary DESC, employee_id) AS row_num
+    -> FROM employees;
++-------------+---------------+------------+----------+---------+
+| employee_id | employee_name | department | salary   | row_num |
++-------------+---------------+------------+----------+---------+
+|           3 | Rahul         | IT         | 60000.00 |       1 |
+|           9 | Karan         | IT         | 55000.00 |       2 |
+|          15 | Priyanka      | IT         | 52000.00 |       3 |
+|          12 | Deepak        | IT         | 48000.00 |       4 |
+|           1 | Aman          | IT         | 45000.00 |       5 |
+|           6 | Sahil         | IT         | 42000.00 |       6 |
+|          10 | Simran        | HR         | 41000.00 |       7 |
+|           5 | Ravi          | HR         | 40000.00 |       8 |
+|          13 | Neha Sharma   | HR         | 39000.00 |       9 |
+|           7 | Ankit         | HR         | 38000.00 |      10 |
+|          11 | Rohit         | Sales      | 36000.00 |      11 |
+|           2 | Priya         | HR         | 35000.00 |      12 |
+|          14 | Vikas         | Sales      | 34000.00 |      13 |
+|           8 | Pooja         | Sales      | 32000.00 |      14 |
+|           4 | Neha          | Sales      | 30000.00 |      15 |
++-------------+---------------+------------+----------+---------+
+15 rows in set (0.00 sec)
+
+mysql> -- 23. Rank employees within each department by salary
+mysql> SELECT employee_id, employee_name, department, salary,
+    ->        DENSE_RANK() OVER (
+    ->            PARTITION BY department
+    ->            ORDER BY salary DESC
+    ->        ) AS department_salary_rank
+    -> FROM employees;
++-------------+---------------+------------+----------+------------------------+
+| employee_id | employee_name | department | salary   | department_salary_rank |
++-------------+---------------+------------+----------+------------------------+
+|          10 | Simran        | HR         | 41000.00 |                      1 |
+|           5 | Ravi          | HR         | 40000.00 |                      2 |
+|          13 | Neha Sharma   | HR         | 39000.00 |                      3 |
+|           7 | Ankit         | HR         | 38000.00 |                      4 |
+|           2 | Priya         | HR         | 35000.00 |                      5 |
+|           3 | Rahul         | IT         | 60000.00 |                      1 |
+|           9 | Karan         | IT         | 55000.00 |                      2 |
+|          15 | Priyanka      | IT         | 52000.00 |                      3 |
+|          12 | Deepak        | IT         | 48000.00 |                      4 |
+|           1 | Aman          | IT         | 45000.00 |                      5 |
+|           6 | Sahil         | IT         | 42000.00 |                      6 |
+|          11 | Rohit         | Sales      | 36000.00 |                      1 |
+|          14 | Vikas         | Sales      | 34000.00 |                      2 |
+|           8 | Pooja         | Sales      | 32000.00 |                      3 |
+|           4 | Neha          | Sales      | 30000.00 |                      4 |
++-------------+---------------+------------+----------+------------------------+
+15 rows in set (0.00 sec)
+
+mysql> -- 24. Compare employee salary with department average
+mysql> SELECT employee_id, employee_name, department, salary,
+    ->        AVG(salary) OVER (PARTITION BY department) AS department_average_salary
+    -> FROM employees;
++-------------+---------------+------------+----------+---------------------------+
+| employee_id | employee_name | department | salary   | department_average_salary |
++-------------+---------------+------------+----------+---------------------------+
+|           2 | Priya         | HR         | 35000.00 |              38600.000000 |
+|           5 | Ravi          | HR         | 40000.00 |              38600.000000 |
+|           7 | Ankit         | HR         | 38000.00 |              38600.000000 |
+|          10 | Simran        | HR         | 41000.00 |              38600.000000 |
+|          13 | Neha Sharma   | HR         | 39000.00 |              38600.000000 |
+|           1 | Aman          | IT         | 45000.00 |              50333.333333 |
+|           3 | Rahul         | IT         | 60000.00 |              50333.333333 |
+|           6 | Sahil         | IT         | 42000.00 |              50333.333333 |
+|           9 | Karan         | IT         | 55000.00 |              50333.333333 |
+|          12 | Deepak        | IT         | 48000.00 |              50333.333333 |
+|          15 | Priyanka      | IT         | 52000.00 |              50333.333333 |
+|           4 | Neha          | Sales      | 30000.00 |              33000.000000 |
+|           8 | Pooja         | Sales      | 32000.00 |              33000.000000 |
+|          11 | Rohit         | Sales      | 36000.00 |              33000.000000 |
+|          14 | Vikas         | Sales      | 34000.00 |              33000.000000 |
++-------------+---------------+------------+----------+---------------------------+
+15 rows in set (0.00 sec)
+
+mysql> -- 25. Employees earning above company average salary
+mysql> SELECT *
+    -> FROM employees
+    -> WHERE salary > (SELECT AVG(salary) FROM employees);
++-------------+---------------+------------+----------+
+| employee_id | employee_name | department | salary   |
++-------------+---------------+------------+----------+
+|           1 | Aman          | IT         | 45000.00 |
+|           3 | Rahul         | IT         | 60000.00 |
+|           6 | Sahil         | IT         | 42000.00 |
+|           9 | Karan         | IT         | 55000.00 |
+|          12 | Deepak        | IT         | 48000.00 |
+|          15 | Priyanka      | IT         | 52000.00 |
++-------------+---------------+------------+----------+
+6 rows in set (0.00 sec)
+
+mysql> -- 26. Customer-wise total spending using CTE
+mysql> WITH customer_sales AS (
+    ->     SELECT c.customer_id, c.customer_name,
+    ->            COUNT(o.order_id) AS total_orders,
+    ->            SUM(o.total_amount) AS total_spent
+    ->     FROM customers c
+    ->     INNER JOIN orders o
+    ->         ON c.customer_id = o.customer_id
+    ->     GROUP BY c.customer_id, c.customer_name
+    -> )
+    -> SELECT *
+    -> FROM customer_sales
+    -> ORDER BY total_spent DESC;
++-------------+---------------+--------------+-------------+
+| customer_id | customer_name | total_orders | total_spent |
++-------------+---------------+--------------+-------------+
+|           8 | Karan         |            1 |     6100.00 |
+|           6 | Aman          |            1 |     5200.00 |
+|           4 | Neha          |            1 |     4500.00 |
+|          10 | Vikas         |            1 |     4200.00 |
+|           1 | Rahul         |            2 |     4000.00 |
+|           2 | Priya         |            1 |     4000.00 |
+|           9 | Pooja         |            1 |     3500.00 |
+|           3 | Amit          |            1 |     3200.00 |
+|           7 | Simran        |            1 |     2700.00 |
+|           5 | Ravi          |            1 |     1800.00 |
++-------------+---------------+--------------+-------------+
+10 rows in set (0.00 sec)
+
+mysql> -- 27. Department-wise employee salary ranking
+mysql> SELECT employee_id, employee_name, department, salary,
+    ->        RANK() OVER (
+    ->            PARTITION BY department
+    ->            ORDER BY salary DESC
+    ->        ) AS department_rank
+    -> FROM employees;
++-------------+---------------+------------+----------+-----------------+
+| employee_id | employee_name | department | salary   | department_rank |
++-------------+---------------+------------+----------+-----------------+
+|          10 | Simran        | HR         | 41000.00 |               1 |
+|           5 | Ravi          | HR         | 40000.00 |               2 |
+|          13 | Neha Sharma   | HR         | 39000.00 |               3 |
+|           7 | Ankit         | HR         | 38000.00 |               4 |
+|           2 | Priya         | HR         | 35000.00 |               5 |
+|           3 | Rahul         | IT         | 60000.00 |               1 |
+|           9 | Karan         | IT         | 55000.00 |               2 |
+|          15 | Priyanka      | IT         | 52000.00 |               3 |
+|          12 | Deepak        | IT         | 48000.00 |               4 |
+|           1 | Aman          | IT         | 45000.00 |               5 |
+|           6 | Sahil         | IT         | 42000.00 |               6 |
+|          11 | Rohit         | Sales      | 36000.00 |               1 |
+|          14 | Vikas         | Sales      | 34000.00 |               2 |
+|           8 | Pooja         | Sales      | 32000.00 |               3 |
+|           4 | Neha          | Sales      | 30000.00 |               4 |
++-------------+---------------+------------+----------+-----------------+
+15 rows in set (0.00 sec)
